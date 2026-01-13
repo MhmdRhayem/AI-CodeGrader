@@ -592,10 +592,10 @@ with gr.Blocks(title="C++ Grading Agent") as demo:
     )
 
 if __name__ == "__main__":
-    logger.info("Starting Gradio UI on http://localhost:7863")
+    logger.info("Starting Gradio UI on http://localhost:7860")
     demo.launch(
-        server_name="0.0.0.0",
-        server_port=7863,
+        server_name="127.0.0.1",
+        server_port=7860,
         share=False,
         show_error=True,
         theme=theme,
