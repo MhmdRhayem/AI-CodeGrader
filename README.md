@@ -1,10 +1,10 @@
 # AI-CodeGrader
 
-Automated C++ code grading system using Large Language Models with multiple evaluation strategies.
+Automated code grading system using Large Language Models with multiple evaluation strategies.
 
 ## Overview
 
-An intelligent grading system that evaluates C++ student submissions against reference solutions using advanced LLM reasoning techniques. Supports 4 grading strategies:
+An intelligent grading system that evaluates student submissions against reference solutions using advanced LLM reasoning techniques. Supports 4 grading strategies:
 
 - **Chain-of-Thought (CoT)**: Step-by-step reasoning
 - **Few-Shot CoT**: Learning from examples

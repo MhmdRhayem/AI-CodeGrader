@@ -468,8 +468,8 @@ theme = (
     )
 )
 
-with gr.Blocks(title="C++ Grading Agent") as demo:
-    gr.Markdown("# 🎓 C++ Grading Agent\nPaste inputs → choose strategy → grade.")
+with gr.Blocks(title="Code Grading Agent") as demo:
+    gr.Markdown("# 🎓 Code Grading Agent\nPaste inputs → choose strategy → grade.")
 
     with gr.Row():
         with gr.Column(scale=1):
@@ -483,7 +483,7 @@ with gr.Blocks(title="C++ Grading Agent") as demo:
                         lines=7,
                     )
                     reference_input = gr.Code(
-                        label="Reference Solution (C++)",
+                        label="Reference Code Solution",
                         language="cpp",
                         value=SAMPLE_REFERENCE,
                         lines=10,
@@ -509,7 +509,7 @@ with gr.Blocks(title="C++ Grading Agent") as demo:
                     )
 
                     student_input = gr.Code(
-                        label="Student Submission (C++)",
+                        label="Student Code Submission",
                         language="cpp",
                         value=SAMPLE_STUDENT,
                         lines=12,

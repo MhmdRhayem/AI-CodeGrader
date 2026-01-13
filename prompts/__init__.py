@@ -1,5 +1,5 @@
 """
-Prompts module for LLM-based C++ grading system.
+Prompts module for LLM-based code grading system.
 
 All prompt templates, examples, and building utilities are defined here.
 """

@@ -72,16 +72,16 @@ class GradingRequest(BaseModel):
     """Request for grading a student submission."""
 
     problem_description: str = Field(
-        ..., min_length=10, description="The C++ problem statement"
+        ..., min_length=10, description="The code problem statement"
     )
     reference_solution: str = Field(
-        ..., min_length=10, description="Teacher's reference C++ solution"
+        ..., min_length=10, description="Teacher's reference code solution"
     )
     rubric: GradingRubric = Field(
         ..., description="Grading rubric with criteria and points"
     )
     student_code: str = Field(
-        ..., min_length=1, description="Student's C++ code submission"
+        ..., min_length=1, description="Student's code submission"
     )
     grading_strategy: Literal["cot", "few_shot_cot", "voting", "evaluator_optimizer"] = Field(
         default="cot",

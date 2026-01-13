@@ -1,5 +1,5 @@
 """
-All prompt templates and examples for LLM-based C++ grading.
+All prompt templates and examples for LLM-based code grading.
 """
 
 # ============================================================================

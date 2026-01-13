@@ -1,5 +1,5 @@
 """
-FastAPI backend for C++ Grading Agent.
+FastAPI backend for code Grading Agent.
 """
 
 import logging
@@ -30,8 +30,8 @@ logger = logging.getLogger(__name__)
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="LLM-Based C++ Grading Agent",
-    description="Automated grading of C++ submissions using Large Language Models",
+    title="LLM-Based Code Grading Agent",
+    description="Automated grading of code submissions using Large Language Models",
     version="1.0.0",
 )
 
@@ -86,7 +86,7 @@ async def root() -> Dict[str, str]:
     Root endpoint with API information.
     """
     return {
-        "message": "LLM-Based C++ Grading Agent API",
+        "message": "LLM-Based code Grading Agent API",
         "version": "1.0.0",
         "model": settings.model_name,
         "endpoints": {

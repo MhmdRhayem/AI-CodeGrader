@@ -34,7 +34,7 @@ class StudentSubmission(BaseModel):
         ..., description="Unique identifier for this submission"
     )
     code: str = Field(
-        ..., min_length=1, description="Student's C++ code"
+        ..., min_length=1, description="Student's code"
     )
     submission_type: SubmissionType = Field(
         ..., description="Classification: correct, partial, or incorrect"
@@ -93,7 +93,7 @@ class BenchmarkQuestion(BaseModel):
         ..., description="Topic area (e.g., 'loops', 'recursion')"
     )
     concepts_tested: List[str] = Field(
-        ..., description="Key C++ concepts tested"
+        ..., description="Key concepts tested"
     )
 
     class Config:
