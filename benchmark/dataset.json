@@ -1,0 +1,300 @@
+{
+  "questions": [
+    {
+      "question_id": "q1_very_easy",
+      "difficulty": "very_easy",
+      "problem_description": "Write a function that finds and returns the maximum of two integer values.\n\nFunction signature: `int findMax(int a, int b);`\n\nRequirements:\n- The function should return the larger of the two input integers\n- If the numbers are equal, return either value\n- Handle both positive and negative integers correctly\n",
+      "reference_solution": "int findMax(int a, int b) {\n    return a > b ? a : b;\n}",
+      "rubric": {
+        "total_points": 10,
+        "criteria": [
+          {
+            "name": "Correctness",
+            "description": "Does the function return the correct maximum?",
+            "max_points": 5.0,
+            "evaluation_guidelines": "Test with positive, negative, equal, and mixed values"
+          },
+          {
+            "name": "Code Quality",
+            "description": "Is the code clean and readable?",
+            "max_points": 3.0,
+            "evaluation_guidelines": "Check for clear variable names and consistent formatting"
+          },
+          {
+            "name": "Efficiency",
+            "description": "Is the solution optimal?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "Should be O(1) time and space"
+          }
+        ]
+      },
+      "student_submissions": [
+        {
+          "submission_id": "q1_correct_1",
+          "code": "int findMax(int a, int b) {\n    return a > b ? a : b;\n}",
+          "submission_type": "correct",
+          "human_grade": 10.0,
+          "human_breakdown": {
+            "Correctness": 5.0,
+            "Code Quality": 3.0,
+            "Efficiency": 2.0
+          },
+          "human_feedback": "Perfect solution using the ternary operator. Clean and efficient."
+        },
+        {
+          "submission_id": "q1_correct_2",
+          "code": "int findMax(int a, int b) {\n    if (a > b) return a;\n    return b;\n}",
+          "submission_type": "correct",
+          "human_grade": 9.0,
+          "human_breakdown": {
+            "Correctness": 5.0,
+            "Code Quality": 3.0,
+            "Efficiency": 1.0
+          },
+          "human_feedback": "Correct solution using if-else. Very clear and readable."
+        },
+        {
+          "submission_id": "q1_partial_1",
+          "code": "int findMax(int a, int b) {\n    if (a >= b) return a;\n    else return b;\n}",
+          "submission_type": "partial",
+          "human_grade": 8.0,
+          "human_breakdown": {
+            "Correctness": 4.5,
+            "Code Quality": 2.5,
+            "Efficiency": 1.0
+          },
+          "human_feedback": "Logically correct but uses >= instead of >. Minor edge case issue."
+        },
+        {
+          "submission_id": "q1_incorrect_1",
+          "code": "int findMax(int a, int b) {\n    return a + b / 2;\n}",
+          "submission_type": "incorrect",
+          "human_grade": 1.0,
+          "human_breakdown": {
+            "Correctness": 0.0,
+            "Code Quality": 0.5,
+            "Efficiency": 0.5
+          },
+          "human_feedback": "Incorrect logic. Returns average, not maximum. Does not meet requirements."
+        }
+      ],
+      "topic": "conditional_logic",
+      "concepts_tested": ["if-else", "ternary operator", "comparison operators"]
+    },
+    {
+      "question_id": "q2_easy",
+      "difficulty": "easy",
+      "problem_description": "Write a function that reverses an array of integers IN-PLACE (without using extra arrays).\n\nFunction signature: `void reverseArray(int arr[], int size);`\n\nRequirements:\n- The function must modify the original array\n- Use no additional arrays (O(1) space complexity)\n- Handle edge cases: empty array, single element, two elements\n- Time complexity should be O(n)\n",
+      "reference_solution": "void reverseArray(int arr[], int size) {\n    int left = 0, right = size - 1;\n    while (left < right) {\n        int temp = arr[left];\n        arr[left] = arr[right];\n        arr[right] = temp;\n        left++;\n        right--;\n    }\n}",
+      "rubric": {
+        "total_points": 10,
+        "criteria": [
+          {
+            "name": "Correctness",
+            "description": "Does it correctly reverse the array?",
+            "max_points": 5.0,
+            "evaluation_guidelines": "Must work in-place, handle all array sizes"
+          },
+          {
+            "name": "In-Place Requirement",
+            "description": "Uses O(1) extra space (no temp arrays)?",
+            "max_points": 3.0,
+            "evaluation_guidelines": "Check for any malloc or extra array allocations"
+          },
+          {
+            "name": "Code Quality",
+            "description": "Is the code clear and maintainable?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "Variable names, comments, readability"
+          }
+        ]
+      },
+      "student_submissions": [
+        {
+          "submission_id": "q2_correct_1",
+          "code": "void reverseArray(int arr[], int size) {\n    int left = 0, right = size - 1;\n    while (left < right) {\n        int temp = arr[left];\n        arr[left] = arr[right];\n        arr[right] = temp;\n        left++;\n        right--;\n    }\n}",
+          "submission_type": "correct",
+          "human_grade": 10.0,
+          "human_breakdown": {
+            "Correctness": 5.0,
+            "In-Place Requirement": 3.0,
+            "Code Quality": 2.0
+          },
+          "human_feedback": "Excellent in-place reversal using two-pointer technique. Perfect!"
+        },
+        {
+          "submission_id": "q2_partial_1",
+          "code": "void reverseArray(int arr[], int size) {\n    int temp[100];\n    for (int i = 0; i < size; i++) {\n        temp[i] = arr[size - 1 - i];\n    }\n    for (int i = 0; i < size; i++) {\n        arr[i] = temp[i];\n    }\n}",
+          "submission_type": "partial",
+          "human_grade": 5.0,
+          "human_breakdown": {
+            "Correctness": 5.0,
+            "In-Place Requirement": 0.0,
+            "Code Quality": 0.0
+          },
+          "human_feedback": "Works functionally but violates in-place requirement. Uses extra array. Hard-coded size."
+        }
+      ],
+      "topic": "array_manipulation",
+      "concepts_tested": ["arrays", "two-pointer technique", "in-place operations"]
+    },
+    {
+      "question_id": "q3_medium",
+      "difficulty": "medium",
+      "problem_description": "Write a function that checks if a string is a palindrome.\n\nFunction signature: `bool isPalindrome(const char* str);`\n\nRequirements:\n- Return true if the string reads the same forwards and backwards\n- Ignore spaces and punctuation (only check alphanumeric characters)\n- Case-insensitive (treat 'A' and 'a' as the same)\n- Handle NULL or empty strings (return true for empty)\n",
+      "reference_solution": "#include <cctype>\n#include <cstring>\n\nbool isPalindrome(const char* str) {\n    if (str == NULL) return true;\n\n    int left = 0, right = strlen(str) - 1;\n\n    while (left < right) {\n        while (left < right && !isalnum(str[left])) left++;\n        while (left < right && !isalnum(str[right])) right--;\n\n        if (tolower(str[left]) != tolower(str[right])) return false;\n\n        left++;\n        right--;\n    }\n\n    return true;\n}",
+      "rubric": {
+        "total_points": 10,
+        "criteria": [
+          {
+            "name": "Correctness",
+            "description": "Does it correctly identify palindromes?",
+            "max_points": 5.0,
+            "evaluation_guidelines": "Test with various palindromes and non-palindromes"
+          },
+          {
+            "name": "Requirements Met",
+            "description": "Ignores spaces/punctuation and is case-insensitive?",
+            "max_points": 3.0,
+            "evaluation_guidelines": "Check handling of 'A man, a plan, a canal: Panama'"
+          },
+          {
+            "name": "Edge Cases",
+            "description": "Handles NULL, empty strings, single character?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "No segmentation faults or unexpected behavior"
+          }
+        ]
+      },
+      "student_submissions": [
+        {
+          "submission_id": "q3_correct_1",
+          "code": "#include <cctype>\n#include <cstring>\n\nbool isPalindrome(const char* str) {\n    if (str == NULL) return true;\n    int left = 0, right = strlen(str) - 1;\n    while (left < right) {\n        while (left < right && !isalnum(str[left])) left++;\n        while (left < right && !isalnum(str[right])) right--;\n        if (tolower(str[left]) != tolower(str[right])) return false;\n        left++;\n        right--;\n    }\n    return true;\n}",
+          "submission_type": "correct",
+          "human_grade": 10.0,
+          "human_breakdown": {
+            "Correctness": 5.0,
+            "Requirements Met": 3.0,
+            "Edge Cases": 2.0
+          },
+          "human_feedback": "Perfect solution. Handles all requirements and edge cases correctly."
+        }
+      ],
+      "topic": "string_processing",
+      "concepts_tested": ["strings", "character functions", "two-pointer technique"]
+    },
+    {
+      "question_id": "q4_hard",
+      "difficulty": "hard",
+      "problem_description": "Write a recursive function that performs binary search on a sorted array.\n\nFunction signature: `int binarySearch(int arr[], int left, int right, int target);`\n\nRequirements:\n- Use RECURSION (not iteration)\n- Array is sorted in ascending order\n- Return the index of target if found, -1 if not found\n- Handle edge cases: empty array, target not in array\n- Demonstrate understanding of divide-and-conquer\n",
+      "reference_solution": "int binarySearch(int arr[], int left, int right, int target) {\n    if (left > right) return -1;\n\n    int mid = left + (right - left) / 2;\n\n    if (arr[mid] == target) {\n        return mid;\n    } else if (arr[mid] < target) {\n        return binarySearch(arr, mid + 1, right, target);\n    } else {\n        return binarySearch(arr, left, mid - 1, target);\n    }\n}",
+      "rubric": {
+        "total_points": 10,
+        "criteria": [
+          {
+            "name": "Correctness",
+            "description": "Does it correctly find targets in sorted arrays?",
+            "max_points": 4.0,
+            "evaluation_guidelines": "Test with various arrays and targets"
+          },
+          {
+            "name": "Recursion",
+            "description": "Properly implements recursion with correct base/recursive cases?",
+            "max_points": 3.0,
+            "evaluation_guidelines": "Base case must be left > right, recursive calls adjust bounds"
+          },
+          {
+            "name": "Efficiency",
+            "description": "O(log n) time complexity?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "Should use mid = left + (right-left)/2 to avoid overflow"
+          },
+          {
+            "name": "Code Quality",
+            "description": "Clear logic and proper variable names?",
+            "max_points": 1.0,
+            "evaluation_guidelines": "Readable recursive structure"
+          }
+        ]
+      },
+      "student_submissions": [
+        {
+          "submission_id": "q4_correct_1",
+          "code": "int binarySearch(int arr[], int left, int right, int target) {\n    if (left > right) return -1;\n    int mid = left + (right - left) / 2;\n    if (arr[mid] == target) {\n        return mid;\n    } else if (arr[mid] < target) {\n        return binarySearch(arr, mid + 1, right, target);\n    } else {\n        return binarySearch(arr, left, mid - 1, target);\n    }\n}",
+          "submission_type": "correct",
+          "human_grade": 10.0,
+          "human_breakdown": {
+            "Correctness": 4.0,
+            "Recursion": 3.0,
+            "Efficiency": 2.0,
+            "Code Quality": 1.0
+          },
+          "human_feedback": "Perfect recursive binary search. Clean, correct, efficient."
+        }
+      ],
+      "topic": "searching_algorithms",
+      "concepts_tested": ["recursion", "binary search", "divide-and-conquer"]
+    },
+    {
+      "question_id": "q5_very_hard",
+      "difficulty": "very_hard",
+      "problem_description": "Implement a simple singly linked list with insert and delete operations.\n\nRequirements:\n- Define a Node structure with integer data and next pointer\n- Implement insert(int value) - insert at the end\n- Implement delete(int value) - delete first occurrence\n- Handle edge cases: empty list, single node, inserting/deleting from front\n- Memory management must be correct (no leaks)\n",
+      "reference_solution": "struct Node {\n    int data;\n    Node* next;\n    Node(int val) : data(val), next(NULL) {}\n};\n\nclass LinkedList {\nprivate:\n    Node* head;\npublic:\n    LinkedList() : head(NULL) {}\n\n    void insert(int value) {\n        Node* newNode = new Node(value);\n        if (head == NULL) {\n            head = newNode;\n        } else {\n            Node* temp = head;\n            while (temp->next != NULL) temp = temp->next;\n            temp->next = newNode;\n        }\n    }\n\n    bool deleteValue(int value) {\n        if (head == NULL) return false;\n        if (head->data == value) {\n            Node* temp = head;\n            head = head->next;\n            delete temp;\n            return true;\n        }\n        Node* current = head;\n        while (current->next != NULL) {\n            if (current->next->data == value) {\n                Node* temp = current->next;\n                current->next = temp->next;\n                delete temp;\n                return true;\n            }\n            current = current->next;\n        }\n        return false;\n    }\n\n    ~LinkedList() {\n        while (head != NULL) {\n            Node* temp = head;\n            head = head->next;\n            delete temp;\n        }\n    }\n};",
+      "rubric": {
+        "total_points": 10,
+        "criteria": [
+          {
+            "name": "Design & Structure",
+            "description": "Proper Node structure and class design?",
+            "max_points": 3.0,
+            "evaluation_guidelines": "Node pointer correctly defined, class manages head"
+          },
+          {
+            "name": "Insert Implementation",
+            "description": "Insert works correctly?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "Handles empty list and appends to end"
+          },
+          {
+            "name": "Delete Implementation",
+            "description": "Delete works correctly?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "Removes correct node and doesn't break list"
+          },
+          {
+            "name": "Memory Management",
+            "description": "No memory leaks, proper delete?",
+            "max_points": 2.0,
+            "evaluation_guidelines": "new/delete balanced, destructor implemented"
+          },
+          {
+            "name": "Edge Cases",
+            "description": "Handles empty list, single node, front deletion?",
+            "max_points": 1.0,
+            "evaluation_guidelines": "No segmentation faults or crashes"
+          }
+        ]
+      },
+      "student_submissions": [
+        {
+          "submission_id": "q5_correct_1",
+          "code": "struct Node {\n    int data;\n    Node* next;\n    Node(int val) : data(val), next(NULL) {}\n};\n\nclass LinkedList {\nprivate:\n    Node* head;\npublic:\n    LinkedList() : head(NULL) {}\n\n    void insert(int value) {\n        Node* newNode = new Node(value);\n        if (head == NULL) head = newNode;\n        else {\n            Node* temp = head;\n            while (temp->next != NULL) temp = temp->next;\n            temp->next = newNode;\n        }\n    }\n\n    bool deleteValue(int value) {\n        if (head == NULL) return false;\n        if (head->data == value) {\n            Node* temp = head;\n            head = head->next;\n            delete temp;\n            return true;\n        }\n        Node* current = head;\n        while (current->next != NULL) {\n            if (current->next->data == value) {\n                Node* temp = current->next;\n                current->next = temp->next;\n                delete temp;\n                return true;\n            }\n            current = current->next;\n        }\n        return false;\n    }\n\n    ~LinkedList() {\n        while (head != NULL) {\n            Node* temp = head;\n            head = head->next;\n            delete temp;\n        }\n    }\n};",
+          "submission_type": "correct",
+          "human_grade": 10.0,
+          "human_breakdown": {
+            "Design & Structure": 3.0,
+            "Insert Implementation": 2.0,
+            "Delete Implementation": 2.0,
+            "Memory Management": 2.0,
+            "Edge Cases": 1.0
+          },
+          "human_feedback": "Excellent implementation. Proper OOP design, correct operations, no memory leaks."
+        }
+      ],
+      "topic": "data_structures",
+      "concepts_tested": ["linked lists", "dynamic memory", "OOP", "pointers"]
+    }
+  ],
+  "version": "1.0",
+  "created_date": "2026-01-11T00:00:00"
+}
