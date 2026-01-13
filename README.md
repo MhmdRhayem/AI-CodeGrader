@@ -160,7 +160,3 @@ Key packages:
 - `fastapi` - REST API
 - `gradio` - Web UI
 - `pydantic` - Data validation
-
-## License
-
-Internal use only.
