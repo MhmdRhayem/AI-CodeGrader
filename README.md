@@ -50,38 +50,6 @@ Open `http://localhost:7860` in your browser.
 python -m uvicorn api.main:app --host 0.0.0.0 --port 8000
 ```
 
-### Programmatic Usage
-```python
-from src.llm import OpenAIClient
-from src.graders import ChainOfThoughtGrader
-from src.models import GradingRequest, GradingRubric, RubricCriterion
-
-# Initialize
-client = OpenAIClient(api_key="sk-...")
-grader = ChainOfThoughtGrader(client)
-
-# Create rubric
-rubric = GradingRubric(
-    criteria=[
-        RubricCriterion(name="Correctness", max_points=5.0),
-        RubricCriterion(name="Code Quality", max_points=3.0),
-    ],
-    total_points=8.0
-)
-
-# Grade submission
-request = GradingRequest(
-    problem_description="Write a function to find maximum...",
-    reference_solution="int max(int a, int b) { return a > b ? a : b; }",
-    rubric=rubric,
-    student_code="int max(int a, int b) { if(a>b) return a; return b; }",
-    grading_strategy="cot"
-)
-
-result = grader.grade(request)
-print(f"Score: {result.final_score}/{result.total_points} ({result.percentage:.1f}%)")
-```
-
 ## Project Structure
 
 ```
@@ -98,26 +66,6 @@ print(f"Score: {result.final_score}/{result.total_points} ({result.percentage:.1
 └── benchmark/          # Dataset and evaluation
 ```
 
-## Configuration
-
-Edit `.env` file:
-
-```env
-OPENAI_API_KEY=sk-your-key-here
-MODEL_NAME=gpt-4o
-TEMPERATURE=0.3
-MAX_TOKENS=2000
-
-API_HOST=0.0.0.0
-API_PORT=8000
-
-GRADIO_HOST=0.0.0.0
-GRADIO_PORT=7860
-
-VOTING_NUM_VOTERS=5
-EVALUATOR_OPTIMIZER_MAX_ITERATIONS=3
-```
-
 ## API Endpoints
 
 ### Single Grading
@@ -128,11 +76,6 @@ POST /api/v1/grade
 ### Batch Grading
 ```
 POST /api/v1/grade_batch
-```
-
-### Available Strategies
-```
-GET /api/v1/grade/strategies
 ```
 
 ## Grading Strategies
