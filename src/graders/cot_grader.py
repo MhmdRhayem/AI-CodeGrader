@@ -7,51 +7,24 @@ from typing import Optional
 
 from src.models import GradingRequest, GradingResult
 from src.graders.base_grader import BaseGrader
-from src.llm import OpenAIClient, PromptBuilder
-from config.prompts.cot_prompt import COT_SYSTEM_PROMPT, COT_USER_PROMPT_TEMPLATE
+from src.llm import OpenAIClient
+from prompts import PromptBuilder, COT_SYSTEM_PROMPT, COT_USER_PROMPT_TEMPLATE
 
 logger = logging.getLogger(__name__)
 
 
 class ChainOfThoughtGrader(BaseGrader):
-    """
-    Grader using Chain-of-Thought prompting.
-
-    Instructs the LLM to reason step-by-step before providing a grade.
-    This improves accuracy by making the reasoning process explicit.
-    """
-
     def __init__(
         self,
         llm_client: OpenAIClient,
         temperature: float = 0.3,
         max_tokens: int = 3000,
     ):
-        """
-        Initialize the CoT grader.
-
-        Args:
-            llm_client: OpenAI API client
-            temperature: Temperature for LLM (lower = more consistent)
-            max_tokens: Maximum tokens in response
-        """
         super().__init__(llm_client)
         self.temperature = temperature
         self.max_tokens = max_tokens
 
     def grade(self, request: GradingRequest) -> GradingResult:
-        """
-        Grade a student submission using Chain-of-Thought prompting.
-
-        Args:
-            request: Grading request
-
-        Returns:
-            GradingResult with scores and reasoning trace
-
-        Raises:
-            ValueError: If LLM response cannot be parsed
-        """
         # Validate request
         if not self.validate_request(request):
             raise ValueError("Invalid grading request")
@@ -97,15 +70,6 @@ class ChainOfThoughtGrader(BaseGrader):
             raise
 
     def _format_reasoning_trace(self, parsed_response: dict) -> str:
-        """
-        Format the reasoning trace from the LLM response.
-
-        Args:
-            parsed_response: Parsed JSON from LLM
-
-        Returns:
-            Formatted reasoning trace string
-        """
         reasoning = parsed_response.get("reasoning", {})
 
         trace_parts = []
